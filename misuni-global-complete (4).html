@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misuni Global - Offshore Accounting & Back-Office Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A2540;
+            --secondary: #1E4B6B;
+            --accent: #D4AF37;
+            --accent-light: #E8D4A0;
+            --text: #1A2332;
+            --text-light: #5E6E82;
+            --bg-white: #FAFBFC;
+            --bg-cream: #F5F2ED;
+            --border: #E1E8ED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--bg-white);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 251, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.7rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 8rem 3rem 10rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Trust Indicators */
+        .trust-bar {
+            background: white;
+            padding: 2rem 3rem;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            margin-top: -3rem;
+            z-index: 2;
+        }
+
+        .trust-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .trust-item {
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .trust-item:nth-child(1) { animation-delay: 0.2s; }
+        .trust-item:nth-child(2) { animation-delay: 0.3s; }
+        .trust-item:nth-child(3) { animation-delay: 0.4s; }
+        .trust-item:nth-child(4) { animation-delay: 0.5s; }
+
+        .trust-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .trust-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 3rem;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Who We Serve */
+        .serve-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .serve-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .serve-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.4s ease;
+        }
+
+        .serve-card:hover::before {
+            height: 100%;
+        }
+
+        .serve-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .serve-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .serve-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Value Proposition */
+        .value-section {
+            background: var(--bg-cream);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .service-list li {
+            color: var(--text-light);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .service-tag {
+            display: inline-block;
+            background: var(--bg-cream);
+            color: var(--text);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        /* Security Section */
+        .security-section {
+            background: var(--primary);
+            color: white;
+        }
+
+        .security-section .section-label {
+            color: var(--accent);
+        }
+
+        .security-section .section-title {
+            color: white;
+        }
+
+        .security-section .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .security-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .security-item-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .security-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .security-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+
+        .footer-brand p {
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-disclaimer {
+            max-width: 1000px;
+            margin: 0 auto 1.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 37, 64, 0.9);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 16px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2.5rem 2.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            opacity: 0.9;
+            font-size: 1.05rem;
+        }
+
+        .modal-body {
+            padding: 2.5rem;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group label .required {
+            color: #E74C3C;
+            margin-left: 3px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #A0AEC0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--accent-light);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.8rem;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .radio-item:hover {
+            border-color: var(--accent-light);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .radio-item input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.8rem;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .radio-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .form-submit {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1.1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-message h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .success-message p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .modal-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .modal-container::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .modal-container::-webkit-scrollbar-thumb:hover {
+            background: #C19E2F;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .value-grid,
+            .serve-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .security-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 7rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .trust-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .security-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-container {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Misuni <span>Global</span></div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#why-us">Why Choose Us</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a class="nav-cta" onclick="openModal()">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Reliable Offshore Accounting & Back-Office Support for Global Firms</h1>
+            <p class="hero-subtitle">We help CPA firms and growing businesses reduce costs, scale faster, and improve turnaround times with secure, process-driven offshore accounting teams.</p>
+            <div class="hero-ctas">
+                <button class="btn-primary" onclick="openModal()">Book a Free Consultation</button>
+                <a href="#services" class="btn-secondary">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item">
+                <div class="trust-icon">🔒</div>
+                <h3>Secure & Compliant</h3>
+                <p>GDPR-aligned data handling</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">💰</div>
+                <h3>40-60% Cost Savings</h3>
+                <p>Without compromising quality</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">⚡</div>
+                <h3>Time-Zone Advantage</h3>
+                <p>Overnight processing</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">📈</div>
+                <h3>Scalable Teams</h3>
+                <p>Flex with your business needs</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="industries">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Our Clients</div>
+                <h2 class="section-title">Who We Serve</h2>
+                <p class="section-description">We partner with organizations that require consistent, high-quality finance and back-office support</p>
+            </div>
+            <div class="serve-grid">
+                <div class="serve-card">
+                    <h3>CPA & Accounting Firms</h3>
+                    <p>White-label services that integrate seamlessly with your workflows, allowing you to scale capacity without overhead.</p>
+                </div>
+                <div class="serve-card">
+                    <h3>Small & Mid-Sized Businesses</h3>
+                    <p>Professional finance functions at a fraction of the cost of building an in-house team.</p>
+                </div>
+                <div class="serve-card">
+                    <h3>E-commerce & Multi-Entity Companies</h3>
+                    <p>Complex reconciliations, multi-currency reporting, and inventory accounting expertise.</p>
+                </div>
+                <div class="serve-card">
+                    <h3>Manufacturing, Logistics & Professional Services</h3>
+                    <p>Industry-specific accounting support tailored to your operational requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-section" id="why-us">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Why Misuni Global</div>
+                <h2 class="section-title">Our Value Proposition</h2>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h3>Cost Efficiency</h3>
+                    <p>Save 40–60% on operational costs by leveraging skilled offshore professionals without compromising quality.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">📊</div>
+                    <h3>Scalable Teams</h3>
+                    <p>Quickly ramp resources up or down based on seasonality, tax cycles, and business growth.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚙️</div>
+                    <h3>Process-Driven Delivery</h3>
+                    <p>Standardized workflows, documented SOPs, and multi-level reviews ensure consistency and accuracy.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Time-Zone Advantage</h3>
+                    <p>Overnight processing allows faster turnaround for client deliverables and improved efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">What We Offer</div>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-description">Comprehensive offshore support across all finance and back-office functions</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Accounting & Bookkeeping</h3>
+                    <ul class="service-list">
+                        <li>Accounts Payable & Receivable</li>
+                        <li>Bank reconciliations</li>
+                        <li>General ledger maintenance</li>
+                        <li>Month-end close support</li>
+                    </ul>
+                    <span class="service-tag">QuickBooks • Xero • Sage • NetSuite</span>
+                </div>
+                <div class="service-card">
+                    <h3>Tax Support Services</h3>
+                    <ul class="service-list">
+                        <li>Tax return data preparation</li>
+                        <li>Trial balance review</li>
+                        <li>Workpaper preparation</li>
+                        <li>GST/HST/VAT compilation</li>
+                    </ul>
+                    <span class="service-tag">Backend support only</span>
+                </div>
+                <div class="service-card">
+                    <h3>Audit Support</h3>
+                    <ul class="service-list">
+                        <li>Lead schedule preparation</li>
+                        <li>Sampling documentation</li>
+                        <li>PBC list coordination</li>
+                        <li>Substantive testing support</li>
+                    </ul>
+                    <span class="service-tag">Drake • UltraTax • CaseWare</span>
+                </div>
+                <div class="service-card">
+                    <h3>Payroll & Back-Office</h3>
+                    <ul class="service-list">
+                        <li>Payroll data processing</li>
+                        <li>Deduction calculations</li>
+                        <li>Timesheet validation</li>
+                        <li>Payroll report preparation</li>
+                    </ul>
+                    <span class="service-tag">Full-cycle support</span>
+                </div>
+                <div class="service-card">
+                    <h3>Management Reporting</h3>
+                    <ul class="service-list">
+                        <li>Monthly P&L and balance sheets</li>
+                        <li>Cash flow analysis</li>
+                        <li>Budget variance analysis</li>
+                        <li>KPI dashboards</li>
+                    </ul>
+                    <span class="service-tag">Excel • Power BI</span>
+                </div>
+                <div class="service-card">
+                    <h3>Industry Expertise</h3>
+                    <ul class="service-list">
+                        <li>E-commerce reconciliation</li>
+                        <li>Manufacturing inventory</li>
+                        <li>Logistics cost tracking</li>
+                        <li>Professional services billing</li>
+                    </ul>
+                    <span class="service-tag">Specialized support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="security-section" id="security">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Trust & Security</div>
+                <h2 class="section-title">Security-First Infrastructure</h2>
+                <p class="section-description">Your data security and confidentiality are our top priorities</p>
+            </div>
+            <div class="security-grid">
+                <div class="security-item">
+                    <div class="security-item-icon">🔐</div>
+                    <h4>Secure VPN Access</h4>
+                    <p>Role-based system access with encrypted connections</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-item-icon">📄</div>
+                    <h4>NDA Protection</h4>
+                    <p>All employees sign comprehensive non-disclosure agreements</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-item-icon">☁️</div>
+                    <h4>Encrypted Cloud</h4>
+                    <p>Secure cloud environments with two-factor authentication</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-item-icon">🌐</div>
+                    <h4>GDPR Aligned</h4>
+                    <p>Compliant data handling procedures and privacy protocols</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-item-icon">🚫</div>
+                    <h4>No Personal Devices</h4>
+                    <p>Restricted access environments and controlled data flow</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-item-icon">🛡️</div>
+                    <h4>Strict Confidentiality</h4>
+                    <p>Comprehensive security training and audit trails</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Operations?</h2>
+            <p>Let's start with a conversation about your business needs and design a custom offshore support model for you.</p>
+            <button class="btn-primary" style="background: white; color: var(--primary);" onclick="openModal()">Schedule a Discovery Call</button>
+            <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">For any inquiries, reach out to <a href="mailto:misuniglobal@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 600;">misuniglobal@gmail.com</a></p>
+        </div>
+    </section>
+
+    <!-- Discovery Call Modal -->
+    <div class="modal-overlay" id="discoveryModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <h2>Schedule a Discovery Call</h2>
+                <p>Tell us about your needs and we'll customize a solution for you</p>
+            </div>
+            <div class="modal-body">
+                <form id="discoveryForm" onsubmit="handleSubmit(event)">
+                    <div class="form-section">
+                        <h3 class="form-section-title">Contact Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="fullName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="John Smith">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="companyName">Company Name <span class="required">*</span></label>
+                            <input type="text" id="companyName" name="companyName" required placeholder="ABC Accounting Inc.">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Work Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="john@company.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number (with country code) <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+1 604 555 1234">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country of Operation <span class="required">*</span></label>
+                            <input type="text" id="country" name="country" required placeholder="Canada">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Business Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="businessType">Business Type <span class="required">*</span></label>
+                            <select id="businessType" name="businessType" required onchange="toggleOtherBusinessType()">
+                                <option value="">Select your business type</option>
+                                <option value="cpa-firm">CPA / Accounting Firm</option>
+                                <option value="smb">Small or Mid-Sized Business</option>
+                                <option value="ecommerce">E-commerce Business</option>
+                                <option value="manufacturing">Manufacturing / Logistics</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="otherBusinessTypeGroup" style="display: none;">
+                            <label for="otherBusinessType">Please specify</label>
+                            <input type="text" id="otherBusinessType" name="otherBusinessType" placeholder="Your business type">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Services You're Interested In</h3>
+                        
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service1" name="services" value="bookkeeping">
+                                <label for="service1">Bookkeeping & Accounting</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service2" name="services" value="tax">
+                                <label for="service2">Tax Preparation Support</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service3" name="services" value="audit">
+                                <label for="service3">Audit Support</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service4" name="services" value="payroll">
+                                <label for="service4">Payroll Support</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service5" name="services" value="fpa">
+                                <label for="service5">FP&A / Reporting</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service6" name="services" value="other">
+                                <label for="service6">Other</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Monthly Work Volume</h3>
+                        
+                        <div class="form-group">
+                            <label>Estimated Monthly Volume <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="volume1" name="volume" value="under-50" required>
+                                    <label for="volume1">Under 50 transactions/returns per month</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="volume2" name="volume" value="50-200">
+                                    <label for="volume2">50–200</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="volume3" name="volume" value="200-500">
+                                    <label for="volume3">200–500</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="volume4" name="volume" value="500-plus">
+                                    <label for="volume4">500+</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="volume5" name="volume" value="not-sure">
+                                    <label for="volume5">Not sure yet</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Current Software</h3>
+                        
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="software1" name="software" value="quickbooks">
+                                <label for="software1">QuickBooks</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="software2" name="software" value="xero">
+                                <label for="software2">Xero</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="software3" name="software" value="sage">
+                                <label for="software3">Sage</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="software4" name="software" value="netsuite">
+                                <label for="software4">NetSuite</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="software5" name="software" value="other" onchange="toggleOtherSoftware()">
+                                <label for="software5">Other</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="otherSoftwareGroup" style="display: none; margin-top: 1rem;">
+                            <label for="otherSoftware">Please specify</label>
+                            <input type="text" id="otherSoftware" name="otherSoftware" placeholder="Software name">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Timeline</h3>
+                        
+                        <div class="form-group">
+                            <label for="timeline">When are you looking to start? <span class="required">*</span></label>
+                            <select id="timeline" name="timeline" required>
+                                <option value="">Select timeline</option>
+                                <option value="immediately">Immediately</option>
+                                <option value="1-month">Within 1 month</option>
+                                <option value="1-3-months">1–3 months</option>
+                                <option value="exploring">Just exploring</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">How Did You Hear About Us?</h3>
+                        
+                        <div class="form-group">
+                            <label for="source">Source (Optional)</label>
+                            <select id="source" name="source">
+                                <option value="">Select source</option>
+                                <option value="referral">Referral</option>
+                                <option value="linkedin">LinkedIn</option>
+                                <option value="google">Google</option>
+                                <option value="website">Website</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="form-submit">Schedule My Discovery Call</button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✓</div>
+                    <h3>Thank You!</h3>
+                    <p>We've received your request and will contact you within 24 hours to schedule your discovery call.</p>
+                    <p style="margin-top: 1rem;"><strong>Check your email for confirmation.</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Misuni <span>Global</span></h3>
+                <p>Enabling firms to scale profitably with reliable, secure, and process-driven back-office support.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Accounting & Bookkeeping</a></li>
+                    <li><a href="#services">Tax Support</a></li>
+                    <li><a href="#services">Audit Support</a></li>
+                    <li><a href="#services">Payroll Services</a></li>
+                    <li><a href="#services">Management Reporting</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#why-us">Why Choose Us</a></li>
+                    <li><a href="#industries">Industries</a></li>
+                    <li><a href="#security">Security</a></li>
+                    <li><a onclick="openModal()">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:misuniglobal@gmail.com">misuniglobal@gmail.com</a></li>
+                    <li><a onclick="openModal()">Schedule a Call</a></li>
+                    <li><a onclick="openModal()">Request Pricing</a></li>
+                    <li><a onclick="openModal()">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-disclaimer">
+                <strong>Legal Disclaimer:</strong> We provide offshore back-office and accounting support services only. We do not offer licensed public accounting, tax filing, or statutory audit services in jurisdictions where licensing is required. All final review and filing responsibility remains with the client or their licensed professionals.
+            </div>
+            <p>&copy; 2025 Misuni Global. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openModal() {
+            const modal = document.getElementById('discoveryModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('discoveryModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            const form = document.getElementById('discoveryForm');
+            const successMessage = document.getElementById('successMessage');
+            if (successMessage.classList.contains('active')) {
+                form.reset();
+                form.style.display = 'block';
+                successMessage.classList.remove('active');
+            }
+        }
+
+        document.getElementById('discoveryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        function toggleOtherBusinessType() {
+            const select = document.getElementById('businessType');
+            const otherGroup = document.getElementById('otherBusinessTypeGroup');
+            const otherInput = document.getElementById('otherBusinessType');
+            
+            if (select.value === 'other') {
+                otherGroup.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherGroup.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = '';
+            }
+        }
+
+        function toggleOtherSoftware() {
+            const checkbox = document.getElementById('software5');
+            const otherGroup = document.getElementById('otherSoftwareGroup');
+            
+            if (checkbox.checked) {
+                otherGroup.style.display = 'block';
+            } else {
+                otherGroup.style.display = 'none';
+                document.getElementById('otherSoftware').value = '';
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            
+            // Send to Formspree
+            fetch('https://formspree.io/f/mnjjpawy', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    const form = document.getElementById('discoveryForm');
+                    const successMessage = document.getElementById('successMessage');
+                    
+                    form.style.display = 'none';
+                    successMessage.classList.add('active');
+                    
+                    // Auto-close modal after 5 seconds
+                    setTimeout(() => {
+                        closeModal();
+                    }, 5000);
+                } else {
+                    response.json().then(data => {
+                        if (data.errors) {
+                            alert('There was a problem submitting the form. Please try again.');
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your request. Please try again or contact us directly.');
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]:not([onclick])').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.serve-card, .value-card, .service-card, .security-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
