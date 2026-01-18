@@ -1198,16 +1198,6 @@
                     </ul>
                     <span class="service-tag">Expert guidance</span>
                 </div>
-                <div class="service-card">
-                    <h3>Industry Expertise</h3>
-                    <ul class="service-list">
-                        <li>E-commerce reconciliation</li>
-                        <li>Manufacturing inventory</li>
-                        <li>Logistics cost tracking</li>
-                        <li>Professional services billing</li>
-                    </ul>
-                    <span class="service-tag">Specialized support</span>
-                </div>
             </div>
         </div>
     </section>
@@ -1292,7 +1282,7 @@
             <h2>Ready to Transform Your Operations?</h2>
             <p>Let's start with a conversation about your business needs and design a custom offshore support model for you.</p>
             <button class="btn-primary" style="background: white; color: var(--primary);" onclick="openModal()">Schedule a Discovery Call</button>
-            <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">For any inquiries, reach out to <a href="/cdn-cgi/l/email-protection#a9c4c0dadcc7c0cec5c6cbc8c5e9cec4c8c0c587cac6c4" style="color: var(--accent); text-decoration: none; font-weight: 600;"><span class="__cf_email__" data-cfemail="b9d4d0caccd7d0ded5d6dbd8d5f9ded4d8d0d597dad6d4">[email&#160;protected]</span></a></p>
+            <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">For any inquiries, reach out to <a href="mailto:misuniglobal@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 600;">misuniglobal@gmail.com</a></p>
         </div>
     </section>
 
@@ -1526,7 +1516,7 @@
             <div class="footer-section">
                 <h4>Contact</h4>
                 <ul class="footer-links">
-                    <li><a href="/cdn-cgi/l/email-protection#7b1612080e15121c1714191a173b1c161a121755181416"><span class="__cf_email__" data-cfemail="adc0c4ded8c3c4cac1c2cfccc1edcac0ccc4c183cec2c0">[email&#160;protected]</span></a></li>
+                    <li><a href="mailto:misuniglobal@gmail.com">misuniglobal@gmail.com</a></li>
                     <li><a onclick="openModal()">Schedule a Call</a></li>
                     <li><a onclick="openModal()">Request Pricing</a></li>
                     <li><a onclick="openModal()">Get Started</a></li>
@@ -1541,7 +1531,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function openModal() {
             const modal = document.getElementById('discoveryModal');
             modal.classList.add('active');
@@ -1562,9 +1552,14 @@
             }
         }
 
-        document.getElementById('discoveryModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
+        window.addEventListener('load', function() {
+            const modal = document.getElementById('discoveryModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                });
             }
         });
 
@@ -1678,4 +1673,16 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)'
+                    entry.target.style.transform = 'translateY(0)'                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.serve-card, .value-card, .service-card, .security-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
